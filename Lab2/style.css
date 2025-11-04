@@ -1,0 +1,131 @@
+.header{
+    padding: 14px 18px;
+    background-color: #0038f0;
+    text-align: center;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* header links and spacing */
+.header a{
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px 8px;
+    border-radius: 6px;
+}
+.header a:hover{
+    background: rgba(10, 43, 212, 0.921);
+}
+
+/* limit generic span margin to header & special span2 */
+.header span,
+.span2{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.name{
+    font-size: 28px;
+    margin: 0;
+}
+
+.subhead{
+    color: #222;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.about{
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.Sections{
+    padding-top: 10px;
+    text-align: left;
+}
+
+.projects{
+    padding-top: 60px;
+    margin-bottom: 80px;
+}
+
+/* showcase uses flexbox with gap and wraps on small screens */
+.showcase{
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container{
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    padding: 16px;
+    box-sizing: border-box;
+    min-width: 220px;
+    width: 300px;
+    box-shadow: 0 2px 8px #0038f0;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.container:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.span2{
+    margin-left: 0; /* handled by .showcase gap */
+    margin-right: 0;
+}
+
+footer{
+    margin-top: 30px;
+    background-color: #0038f0;
+    padding: 10px 6px;
+    color: white;
+    text-align: center;
+}
+
+/* inputs & buttons: responsive, use box-sizing so widths behave well */
+input{
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 500px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+button{
+    background-color: #0038f0;
+    color: white;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 500px;
+    padding: 10px 12px;
+    border: none;
+    cursor: pointer;
+}
+
+/* layout container for main sections to center and constrain width */
+.Sections > div{
+    max-width: 1100px;
+    margin: 0 auto 20px;
+    padding: 0 16px;
+}
+
+/* small screens */
+@media (max-width: 600px){
+    .showcase{
+        flex-direction: column;
+        align-items: center;
+    }
+    .container{
+        width: 100%;
+        max-width: 420px;
+    }
+    .name{ font-size: 22px; }
+}
