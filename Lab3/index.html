@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IOS Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="calc">
+      <h2>IOS Calculator</h2>
+      <div id="display" class="displayy">0</div>
+
+      <div class="buttons">
+        <button onclick="clearDisplay()" class="func">AC</button>
+        <button onclick="appendNumber('00')" class="num">00</button>
+        <button onclick="appendOp('%')" class="func">%</button>
+        <button onclick="appendOp('/')" class="op">/</button>
+
+        <button onclick="appendNumber(7)" class="num">7</button>
+        <button onclick="appendNumber(8)" class="num">8</button>
+        <button onclick="appendNumber(9)" class="num">9</button>
+        <button onclick="appendOp('*')" class="op">x</button>
+
+        <button onclick="appendNumber(4)" class="num">4</button>
+        <button onclick="appendNumber(5)" class="num">5</button>
+        <button onclick="appendNumber(6)" class="num">6</button>
+        <button onclick="appendOp('-')" class="op">-</button>
+
+        <button onclick="appendNumber(1)" class="num">1</button>
+        <button onclick="appendNumber(2)" class="num">2</button>
+        <button onclick="appendNumber(3)" class="num">3</button>
+        <button onclick="appendOp('+')" class="op">+</button>
+
+        <button onclick="appendNumber(0)" class="zero num">0</button>
+        <button onclick="appendDot()" class="num dot">.</button>
+        <button onclick="calculateResult()" class="op">=</button>
+      </div>
+    </div>
+
+    <script>
+      let firstNumber = "";
+      let secondNumber = "";
+      let operator = "";
+      let shouldResetDisplay = false;
+
+      const display = document.getElementById("display");
+
+      function clearDisplay() {
+        display.textContent = "0";
+        firstNumber = "";
+        secondNumber = "";
+        operator = "";
+        shouldResetDisplay = false;
+      }
+
+      function appendNumber(num) {
+        if (display.textContent === "0" || shouldResetDisplay) {
+          display.textContent = "";
+          shouldResetDisplay = false;
+        }
+        display.textContent += num;
+      }
+
+      function appendDot() {
+        if (shouldResetDisplay) {
+          display.textContent = "0";
+          shouldResetDisplay = false;
+        }
+        if (!display.textContent.includes(".")) {
+          display.textContent += ".";
+        }
+      }
+
+      function appendOp(op) {
+        if (operator !== "") calculateResult();
+        firstNumber = display.textContent;
+        operator = op;
+        shouldResetDisplay = true;
+      }
+
+      function calculateResult() {
+        if (operator === "") return;
+        secondNumber = display.textContent;
+
+        const num1 = parseFloat(firstNumber);
+        const num2 = parseFloat(secondNumber);
+        let result = 0;
+
+        switch (operator) {
+          case "+":
+            result = num1 + num2;
+            break;
+          case "-":
+            result = num1 - num2;
+            break;
+          case "*":
+            result = num1 * num2;
+            break;
+          case "/":
+            result = num2 !== 0 ? num1 / num2 : "Error";
+            break;
+          case "%":
+            result = num1 % num2;
+            break;
+          default:
+            return;
+        }
+
+        display.textContent = result;
+        operator = "";
+        shouldResetDisplay = true;
+      }
+    </script>
+  </body>
+</html>
