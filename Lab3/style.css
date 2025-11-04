@@ -1,0 +1,100 @@
+body {
+    background-color: #000; /* black background as requested */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calc {
+    width: 340px;
+    padding: 24px 20px 28px;
+    border-radius: 36px;
+    background: linear-gradient(180deg, #2b2b2b 0%, #1b1b1b 100%);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.02);
+    text-align: center;
+}
+
+/* hide the heading visually (not part of iOS UI) */
+h2 { display: none; }
+
+.displayy {
+    background-color: transparent;
+    color: #ffffff;
+    width: 100%;
+    height: 92px;
+    text-align: right;
+    font-size: 54px;
+    line-height: 92px;
+    padding: 0 22px;
+    box-sizing: border-box;
+    margin-bottom: 18px;
+    font-weight: 300;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+button {
+    height: 72px;
+    font-size: 28px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform .08s ease, box-shadow .08s ease;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.25), 0 8px 18px rgba(0,0,0,0.35);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+button:active{
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.25), 0 6px 12px rgba(0,0,0,0.35);
+}
+
+/* function buttons (AC, +/- , %) - light gray with dark text */
+.func{
+    background-color: #a5a5a5;
+    color: #000;
+}
+
+/* numeric buttons - dark gray */
+.num{
+    background-color: #333333;
+    color: #fff;
+}
+
+/* operator buttons - iOS orange */
+.op{
+    background-color: #ff9500;
+    color: #fff;
+}
+
+/* zero button spans two columns and is pill-shaped */
+.zero{
+    grid-column: span 2;
+    border-radius: 36px;
+    height: 72px;
+    justify-content: flex-start;
+    padding-left: 40px;
+    box-sizing: border-box;
+}
+
+/* slightly smaller dot button when needed */
+.dot{
+    font-size: 28px;
+}
+
+/* responsive for small screens */
+@media (max-width: 420px){
+    .calc{ width: 92%; padding: 18px; }
+    .displayy{ font-size: 44px; height: 80px; line-height: 80px; }
+    button{ height: 64px; font-size: 24px; }
+}
